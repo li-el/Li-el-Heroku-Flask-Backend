@@ -20,7 +20,7 @@ config = {
   "databaseURL": "https://cs148-couch-potato.firebaseio.com",
   "storageBucket": "cs148-couch-potato.appspot.com",
 }
-firebase = pyrebase.initialize_app(config)
+firebase = pyrebase4.initialize_app(config)
 ### CORS section
 @app.after_request
 def after_request_func(response):
