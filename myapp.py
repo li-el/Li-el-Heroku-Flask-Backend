@@ -93,6 +93,9 @@ def postit():
     if acc:
         response["MESSAGE"]= "Welcome! POST args are {} and {}".format(acc,sec)
         status = 200
+        database = firebase.database()
+        data = {"name": "Mortimer 'Morty' Smith"}
+        database.push(data)
     else:
         response["MESSAGE"]= "No acckey or seckey keys found, please resend."
         status = 400
