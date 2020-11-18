@@ -15,13 +15,13 @@ from flask import Flask, request, jsonify, make_response
 app = Flask(__name__)
 DEBUG=True
 
-#config = {
-#  "apiKey": "AIzaSyCfagUCrWOtW1ulQ7IDwAStna25htiV950",
-#  "authDomain":  "cs148-couch-potato.firebaseapp.com",
-#  "databaseURL": "https://cs148-couch-potato.firebaseio.com",
-#  "storageBucket": "cs148-couch-potato.appspot.com",
-#}
-#firebase = pyrebase.initialize_app(config)
+config = {
+  "apiKey": "AIzaSyCfagUCrWOtW1ulQ7IDwAStna25htiV950",
+  "authDomain":  "cs148-couch-potato.firebaseapp.com",
+  "databaseURL": "https://cs148-couch-potato.firebaseio.com",
+  "storageBucket": "cs148-couch-potato.appspot.com",
+}
+firebase = pyrebase.initialize_app(config)
 ### CORS section
 @app.after_request
 def after_request_func(response):
@@ -64,9 +64,9 @@ def respond():
     else: #valid message
         response["MESSAGE"] = f"Welcome {msg}!"
         status = 200
-        #database = firebase.database()
-        #data = {"name": "Mortimer 'Morty' Smith"}
-        #database.push(data)
+        database = firebase.database()
+        data = {"name": "Mortimer 'Morty' Smith"}
+        database.push(data)
 
     # Return the response in json format with status code
     return jsonify(response), status
@@ -93,9 +93,9 @@ def postit():
     if acc:
         response["MESSAGE"]= "Welcome! the POST args are {} and {}".format(acc,sec)
         status = 200
-        #database = firebase.database()
-        #data = {"name": "Mortimer 'Morty' Smith"}
-        #database.push(data)
+        database = firebase.database()
+        data = {"name": "Mortimer 'Morty' Smith"}
+        database.push(data)
     else:
         response["MESSAGE"]= "No acckey or seckey keys found, please resend."
         status = 400
