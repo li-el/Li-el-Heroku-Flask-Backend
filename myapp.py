@@ -7,7 +7,7 @@
 
 import os, json
 from flask import Flask, request, jsonify, make_response
-#import pyrebase
+import pyrebase
 
 
 #use this if linking to a reaact app on the same server
