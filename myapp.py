@@ -7,12 +7,21 @@
 
 import os, json
 from flask import Flask, request, jsonify, make_response
+import pyrebase
+
 
 #use this if linking to a reaact app on the same server
 #app = Flask(__name__, static_folder='./build', static_url_path='/')
 app = Flask(__name__)
 DEBUG=True
 
+config = {
+  "apiKey": "AIzaSyCfagUCrWOtW1ulQ7IDwAStna25htiV950",
+  "authDomain":  "cs148-couch-potato.firebaseapp.com",
+  "databaseURL": "https://cs148-couch-potato.firebaseio.com",
+  "storageBucket": "cs148-couch-potato.appspot.com",
+}
+firebase = pyrebase.initialize_app(config)
 ### CORS section
 @app.after_request
 def after_request_func(response):
@@ -55,6 +64,9 @@ def respond():
     else: #valid message
         response["MESSAGE"] = f"Welcome {msg}!"
         status = 200
+        database = firebase.database()
+        data = {"name": "Mortimer 'Morty' Smith"}
+        database.push(data)
 
     # Return the response in json format with status code
     return jsonify(response), status
