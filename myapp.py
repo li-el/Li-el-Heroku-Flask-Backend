@@ -91,7 +91,7 @@ def postit():
     if DEBUG:
         print("POST: acc={}, sec={}".format(acc,sec))
     if acc:
-        response["MESSAGE"]= "Welcome! POST args are {} and {}".format(acc,sec)
+        response["MESSAGE"]= "Welcome! the POST args are {} and {}".format(acc,sec)
         status = 200
         database = firebase.database()
         data = {"name": "Mortimer 'Morty' Smith"}
