@@ -7,8 +7,7 @@
 
 import os, json
 from flask import Flask, request, jsonify, make_response
-import Pyrebase4
-
+from pyrebase4 import pyrebase
 #use this if linking to a reaact app on the same server
 #app = Flask(__name__, static_folder='./build', static_url_path='/')
 app = Flask(__name__)
@@ -20,7 +19,7 @@ config = {
   "databaseURL": "https://cs148-couch-potato.firebaseio.com",
   "storageBucket": "cs148-couch-potato.appspot.com",
 }
-firebase = Pyrebase4.initialize_app(config)
+firebase = pyrebase.initialize_app(config)
 ### CORS section
 @app.after_request
 def after_request_func(response):
